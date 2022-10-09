@@ -1,0 +1,12 @@
+artifact_path: model
+databricks_runtime: 11.2.x-cpu-ml-scala2.12
+flavors:
+  python_function:
+    data: data/feature_store
+    env: conda.yaml
+    loader_module: databricks.feature_store.mlflow_model
+    python_version: 3.9.5
+mlflow_version: 1.28.0
+model_uuid: e0413a1998f5443e9e41462ea91a8f59
+run_id: ab37c0022b1346b283876ea77991e225
+utc_time_created: '2022-09-29 11:22:12.263627'

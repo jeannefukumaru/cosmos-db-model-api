@@ -1,0 +1,80 @@
+input_columns:
+- alcohol:
+    source: training_data
+- chlorides:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: chlorides
+    lookup_key:
+    - wine_id
+    output_name: chlorides
+    source: feature_store
+- citric_acid:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: citric_acid
+    lookup_key:
+    - wine_id
+    output_name: citric_acid
+    source: feature_store
+- density:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: density
+    lookup_key:
+    - wine_id
+    output_name: density
+    source: feature_store
+- fixed_acidity:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: fixed_acidity
+    lookup_key:
+    - wine_id
+    output_name: fixed_acidity
+    source: feature_store
+- free_sulfur_dioxide:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: free_sulfur_dioxide
+    lookup_key:
+    - wine_id
+    output_name: free_sulfur_dioxide
+    source: feature_store
+- pH:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: pH
+    lookup_key:
+    - wine_id
+    output_name: pH
+    source: feature_store
+- residual_sugar:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: residual_sugar
+    lookup_key:
+    - wine_id
+    output_name: residual_sugar
+    source: feature_store
+- sulphates:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: sulphates
+    lookup_key:
+    - wine_id
+    output_name: sulphates
+    source: feature_store
+- total_sulfur_dioxide:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: total_sulfur_dioxide
+    lookup_key:
+    - wine_id
+    output_name: total_sulfur_dioxide
+    source: feature_store
+- volatile_acidity:
+    table_name: online_feature_store_example.wine_static_features
+    feature_name: volatile_acidity
+    lookup_key:
+    - wine_id
+    output_name: volatile_acidity
+    source: feature_store
+workspace_id: '1087027582895104'
+feature_store_client_version: 0.6.0
+input_tables:
+- online_feature_store_example.wine_static_features:
+    table_name: online_feature_store_example.wine_static_features
+    table_id: be6d91eec6084a30a0623c28325cc9d5
+serialization_version: 4
