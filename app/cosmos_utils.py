@@ -54,34 +54,28 @@ async def read_items(container_obj, items_to_read):
         print('Read item with id {0}. Operation consumed {1} request units'.format(item_response['id'], (request_charge)))
 
 async def query_cosmos(ids):
-    async def query_cosmos(ids):
-        endpoint = os.environ["COSMOS_ENDPOINT"]
-        key = os.environ["COSMOS_KEY"]
-        database_name = config["COSMOS"]["database_name"]
-        container_name = config["COSMOS"]["container_name"]
-        async with cosmos_client(endpoint, credential = key) as client:
-            try:
-                dbs = [x async for x in client.list_databases()]
-                print(dbs)
-                database_obj = await get_db(client, database_name)
-                container_obj = await get_container(database_obj, container_name)
-                # TODO: make this batch query with IN
-                results = []
-                for id in ids:
-                    query_text = "SELECT * FROM feature_store_online_wine_features f WHERE f._feature_store_internal__primary_keys = @id"
-                    res = await query_items(container_obj, query_text, id)
-                    results.append(res)
-                results = [r for res in results for r in res]
-                print(results)
-                return pd.DataFrame(results)
-
-                # await read_items(container_obj, ids)
-            except exceptions.CosmosResourceNotFoundError:
-                print("Cosmos resource not found")
-    # loop = asyncio.new_event_loop()
-    ids = ["[0]", "[1]", "[2]"]
-    results = await query_cosmos(ids)
-    return results
+    endpoint = os.environ["COSMOS_ENDPOINT"]
+    key = os.environ["COSMOS_KEY"]
+    database_name = config["COSMOS"]["database_name"]
+    container_name = config["COSMOS"]["container_name"]
+    async with cosmos_client(endpoint, credential = key) as client:
+        try:
+            dbs = [x async for x in client.list_databases()]
+            print(dbs)
+            database_obj = await get_db(client, database_name)
+            container_obj = await get_container(database_obj, container_name)
+            # TODO: make this batch query with IN
+            results = []
+            for id in ids:
+                query_text = "SELECT * FROM feature_store_online_wine_features f WHERE f._feature_store_internal__primary_keys = @id"
+                res = await query_items(container_obj, query_text, id)
+                results.append(res)
+            results = [r for res in results for r in res]
+            print(results)
+            return pd.DataFrame(results)
+            # await read_items(container_obj, ids)
+        except exceptions.CosmosResourceNotFoundError:
+            print("Cosmos resource not found")
 
     
 
